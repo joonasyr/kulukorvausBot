@@ -17,7 +17,11 @@ puuduttavaa hommaa.
 
 ## Käyttöohjeet
 
-Ensimmäiseksi tulee vaihtaa oikeat kirjautumistiedot _login.txt_ tiedostoon. Riville 11 ja 18 tulee asettaa hakemiston osoite,
+Ensimmäiseksi tulee vaihtaa oikeat kirjautumistiedot _login.txt_ tiedostoon. 
+
+$${\color{red}Test}$$
+
+Riville 11 ja 18 tulee asettaa hakemiston osoite,
 johon tiedosto on koneellasi asennettu.
 
 ```python
@@ -76,4 +80,13 @@ ja aja seuraava komento
 
 Tämän komennon suoritettuasi äskeiseen kansioon on nyt tullut lisää tiedostoja. Uudessa _dist_ kansiossa sijaitsee nyt _main.exe_, jonka voit siirtää
 esim. työpöydällesi valmiiksi käyttöä varten.
+
+## Huomioitavaa
+
+Ohjelmassa ei ole virhetarkastelua joten jos ohjelma kaatuu (varsinkin ensimmäsillä käyttökerroilla), kannattaa tarkistaa että muokatut hakemistojen osoitteet
+on kirjoitettu oikein.
+
+Ohjelma on tarkoitettu ***apuvälineeksi***. Muista aina ***varmistaa*** vielä ***manuaalisesti*** [kululaskut.fi](https://kululaskut.fi/):stä, että kaikki uudet
+kulukorvaukset on saatu mukaan.
+
 
