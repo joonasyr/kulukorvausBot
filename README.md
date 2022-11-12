@@ -2,7 +2,7 @@
 
 **NOTE: this _README_ is only in Finnish, as the script is used by only Tite's treasurers and/or assistant treasurers that are required to speak fluent Finnish.
 
-## Toiminnot
+## Yleistä
 
 Kyseessä on botti joka automatisoi kulukorvausten hakemisen [kululaskut.fi](https://kululaskut.fi/) sivustolta.
 
@@ -13,9 +13,11 @@ voi kopioida suoraan kokouksen virtuaaliseen esityslistaan.
 ### _Miksi?_
 
 Helpottamaan rahastonhoitajan / rahastonhoitajan avun elämää. Kulukorvausten liittäminen VEL:iin manuaalisesti on
-puuduttavaa hommaa.
+puuduttavaa hommaa. Tällä säästää kallisarvoisia minuutteja joka viikko!
 
-## Käyttöohjeet
+Lisäksi halusin tutustua seleniumiin ja sen kautta erilaisten toimintojen automatisointiin.
+
+## Asennus
 
 Ensimmäiseksi tulee vaihtaa oikeat kirjautumistiedot _login.txt_ tiedostoon. 
 
@@ -79,14 +81,17 @@ ja aja seuraava komento
 `pyinstaller --onefile main.py`
 
 Tämän komennon suoritettuasi äskeiseen kansioon on nyt tullut lisää tiedostoja. Uudessa _dist_ kansiossa sijaitsee nyt _main.exe_, jonka voit siirtää
-esim. työpöydällesi valmiiksi käyttöä varten.
+esim. työpöydällesi. Jatkossa voit siis ajaa ohjelman suoraan työpöydältäsi.
 
 ## Huomioitavaa
 
-Ohjelmassa ei ole virhetarkastelua joten jos ohjelma kaatuu (varsinkin ensimmäsillä käyttökerroilla), kannattaa tarkistaa että muokatut hakemistojen osoitteet
-on kirjoitettu oikein.
-
 Ohjelma on tarkoitettu ***apuvälineeksi***. Muista aina ***varmistaa*** vielä ***manuaalisesti*** [kululaskut.fi](https://kululaskut.fi/):stä, että kaikki uudet
 kulukorvaukset on saatu mukaan.
+
+Ohjelmassa ei ole kattavaa virhetarkastelua joten jos ohjelma kaatuu (varsinkin ensimmäsillä käyttökerroilla), kannattaa tarkistaa että muokatut hakemistojen osoitteet
+on kirjoitettu oikein.
+
+_login.txt_ tiedoston sisältö ei ole mitenkään salattua, joten suosittelen käyttämään salasanana jotain salasanaa, joka ei ole sinulla muualla käytössä.
+Näin jos salasana päätyisi jotain kautta vääriin käsiin, ei mitään radikaalia voi tapahtua.
 
 
