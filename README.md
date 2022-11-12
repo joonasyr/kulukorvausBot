@@ -24,8 +24,7 @@ Ensimmäiseksi tulee vaihtaa oikeat kirjautumistiedot _login.txt_ tiedostoon.
 
 $${\color{lightgray}email; \color{red}testi@testi.fi \color{lightgray};password; \color{red}insertPasswordHere}$$
 
-Tämän jälkeen riville 15 ja 26 tulee asettaa hakemiston osoite,
-johon kyseinen tiedosto on koneellasi asennettu.
+Tämän jälkeen riveille 15 ja 26 tulee asettaa polku tiedostolle _login.txt_, jonka olet kloonannut repositoriosta.
 
 ```python
 
@@ -33,7 +32,7 @@ login_file = open(r"C:\...", "r")
 
 ```
 
-Seuraavaksi riville 85 tulee asettaa hakemiston osoite, johon Chrome on asetettu tallentamaan uudet tiedostot (yleensä _Downloads_ kansio).
+Seuraavaksi riville 85 tulee asettaa kansion polku, johon Chrome on asetettu tallentamaan uudet tiedostot (yleensä _Downloads_ kansio).
 
 ```python
 
@@ -42,7 +41,7 @@ downloads = glob.glob("C:\\Users\\nameHere\\Downloads\\*".format(getpass.getuser
 ```
 
 Viimeisenä muutoksena tulee määritellä tiedosto, johon käsitelty tieto tallennetaan. Itse olen esim. luonut _kulukorvaukset.txt_ tiedoston _Hallitus_ kansioon
-ja liittänyt tämän tiedoston osoitteen koodiin. Tämä tapahtuu riveillä 112 ja 120
+ja liittänyt tämän tiedoston polun koodiin. Tämä tapahtuu riveillä 112 ja 120
 
 ```python
 
@@ -56,10 +55,10 @@ os.startfile(r"C:\...\Hallitus\kulukorvaukset.txt")
 
 ### .exe tiedoston luominen
 
-Jotta scripti olisi mahdollisimman vaivaton ajaa, on järkevää yllä olevien muutosten jälkeen muuttaa koodi ajettavaksi _.exe_ tiedostoksi.
+Jotta scripti olisi mahdollisimman vaivaton ajaa, kannattaa yllä olevien muutosten jälkeen muuttaa koodi helposti ajettavaksi _.exe_ tiedostoksi.
 Tämä tapahtuu helpoiten ***pyinstallerin*** kautta. 
 
-***HUOM*** tässä vaiheessa oletan, että  koneellasi on jo Python asennettuna.
+**HUOM**: tässä vaiheessa oletan, että koneellasi on Python asennettuna.
 
 Ensimmäisenä ***asennetaan pyinstaller***.  Avataan siis komentorivi ja kirjoitetaan
 
@@ -83,7 +82,7 @@ ja aja seuraava komento
 
 `pyinstaller --onefile kulukorvaus.py`
 
-Tämän komennon suoritettuasi äskeiseen kansioon on nyt tullut lisää tiedostoja. Uudessa _dist_ kansiossa sijaitsee nyt _kulukorvaus.exe_, jonka voit siirtää
+Tämän komennon suoritettuasi loppuun pitäisi äskeiseen kansioon ilmestyä lisää tiedostoja. Uudessa _dist_ kansiossa sijaitsee nyt _kulukorvaus.exe_, jonka voit siirtää
 esim. työpöydällesi. Jatkossa voit siis ajaa ohjelman suoraan työpöydältäsi.
 
 ## Huomioitavaa
