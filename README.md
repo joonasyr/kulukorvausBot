@@ -23,7 +23,7 @@ Ensimmäiseksi tulee vaihtaa oikeat kirjautumistiedot _login.txt_ tiedostoon.
 
 $${\color{lightgray}email; \color{red}testi@testi.fi \color{lightgray};password; \color{red}insertPasswordHere}$$
 
-Tämän jälkeen riville 11 ja 18 tulee asettaa hakemiston osoite,
+Tämän jälkeen riville 15 ja 26 tulee asettaa hakemiston osoite,
 johon kyseinen tiedosto on koneellasi asennettu.
 
 ```python
@@ -32,7 +32,7 @@ login_file = open(r"C:\...", "r")
 
 ```
 
-Seuraavaksi riville 66 tulee asettaa hakemiston osoite, johon Chrome on asetettu tallentamaan uudet tiedostot (yleensä _Downloads_ kansio).
+Seuraavaksi riville 85 tulee asettaa hakemiston osoite, johon Chrome on asetettu tallentamaan uudet tiedostot (yleensä _Downloads_ kansio).
 
 ```python
 
@@ -41,7 +41,7 @@ downloads = glob.glob("C:\\Users\\nameHere\\Downloads\\*".format(getpass.getuser
 ```
 
 Viimeisenä muutoksena tulee määritellä tiedosto, johon käsitelty tieto tallennetaan. Itse olen esim. luonut _kulukorvaukset.txt_ tiedoston _Hallitus_ kansioon
-ja liittänyt tämän tiedoston osoitteen koodiin. Tämä tapahtuu riveillä 88 ja 93
+ja liittänyt tämän tiedoston osoitteen koodiin. Tämä tapahtuu riveillä 112 ja 120
 
 ```python
 
@@ -96,5 +96,7 @@ on kirjoitettu oikein.
 _login.txt_ tiedoston sisältö ei ole mitenkään salattua, joten suosittelen käyttämään salasanana jotain salasanaa, joka ei ole sinulla muualla käytössä.
 Jos salasana jostain syystä päätyisi vääriin käsiin, ei mitään radikaalia voi tapahtua. Kululaskut palvelussa ei onneksi saa mitään vakavaa tuhoa aikaan vaikka sinne joku
 ulkopuolinen pääsisikin.
+
+Ohjelma on ja ohjeet on suunnattu vain Windows pohjaisille käyttöjärjestelmille. Jos käytät Linuxia tai MacOS pohjaista konetta, saatat joutua hieman soveltamaan.
 
 
