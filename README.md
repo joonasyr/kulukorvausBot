@@ -1,6 +1,6 @@
 # kulukorvaus-scripti/botti
 
-**NOTE: this _README_ is only in Finnish, as the script is only used by Tite's treasurers and/or assistant treasurers that are required to speak fluent Finnish.
+**NOTE: this _README_ is only in Finnish, as the script is only used by Tite's treasurers and/or assistant treasurers that are required to speak fluent Finnish.**
 
 ## Yleistä
 
