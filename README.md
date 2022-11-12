@@ -19,10 +19,10 @@ puuduttavaa hommaa.
 
 Ensimmäiseksi tulee vaihtaa oikeat kirjautumistiedot _login.txt_ tiedostoon. 
 
-$${\color{gray}email; \color{red}testi@testi.fi \color{gray};password; \color{red}insertPasswordHere}$$
+$${\color{lightgray}email; \color{red}testi@testi.fi \color{lightgray};password; \color{red}insertPasswordHere}$$
 
-Riville 11 ja 18 tulee asettaa hakemiston osoite,
-johon tiedosto on koneellasi asennettu.
+Tämän jälkeen riville 11 ja 18 tulee asettaa hakemiston osoite,
+johon kyseinen tiedosto on koneellasi asennettu.
 
 ```python
 
