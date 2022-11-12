@@ -1,4 +1,6 @@
-# **kulukorvaus-scripti/botti**
+# kulukorvaus-scripti/botti
+
+**NOTE: this _README_ is only in Finnish, as the script is used by only Tite's treasurers and/or assistant treasurers that are required to speak fluent Finnish.
 
 ## Toiminnot
 
@@ -24,7 +26,7 @@ login_file = open(r"C:\...", "r")
 
 ```
 
-Seuraavaksi riville 66 tulee asettaa hakemisto, johon Chrome on asetettu tallentamaan ladatut tiedostot (yleensä _Downloads_ kansio).
+Seuraavaksi riville 66 tulee asettaa hakemiston osoite, johon Chrome on asetettu tallentamaan uudet tiedostot (yleensä _Downloads_ kansio).
 
 ```python
 
@@ -33,7 +35,7 @@ downloads = glob.glob("C:\\Users\\joona\\Downloads\\*".format(getpass.getuser())
 ```
 
 Viimeisenä muutoksena tulee määritellä tiedosto, johon käsitelty tieto tallennetaan. Itse olen esim. luonut _kulukorvaukset.txt_ tiedoston _Hallitus_ kansioon
-ja liittänyt tämän osoitteen koodiin. Tämä tapahtuu riveillä 88 ja 93
+ja liittänyt tämän tiedoston osoitteen koodiin. Tämä tapahtuu riveillä 88 ja 93
 
 ```python
 
@@ -47,8 +49,8 @@ os.startfile(r"C:\...\Hallitus\kulukorvaukset.txt")
 
 ### .exe tiedoston luominen
 
-Jotta scripti olisi mahdollisimman helppo ajaa, on järkevää yllä olevien muutosten jälkeen muuttaa koodi ajettavaksi _.exe_ tiedostoksi.
-Tämä tapahtuu helpoiten ***pyinstallerin*** kautta. *HUOM* tässä vaiheessa oletan, että  koneellasi on jo Python asennettuna.
+Jotta scripti olisi mahdollisimman vaivaton ajaa, on järkevää yllä olevien muutosten jälkeen muuttaa koodi ajettavaksi _.exe_ tiedostoksi.
+Tämä tapahtuu helpoiten ***pyinstallerin*** kautta. ***HUOM*** tässä vaiheessa oletan, että  koneellasi on jo Python asennettuna.
 
 Ensimmäisenä ***asennetaan pyinstaller***.  Avataan siis komentorivi ja kirjoitetaan
 
@@ -57,13 +59,15 @@ Ensimmäisenä ***asennetaan pyinstaller***.  Avataan siis komentorivi ja kirjoi
 Seuraavaksi tulee asentaa scriptiin liittyvät kirjastot.
 
 `pip install selenium`
+
 `pip install webdriver_manager`
+
 `pip install packaging`
 
 Ennen _.exe_ tiedostoksi muuttamista, kannattaa tässä vaiheessa kokeilla, että koodi toimii oikein komentorivin kautta. Navigoi siis komentorivillä
-kansioon, johon _main.py_ on tallenettu ja aja
+kansioon, johon _main.py_ on tallenettu ja aja komento
 
-`Python main.py`
+`python main.py`		
 
 Jos scripti toimi oikein, voidaan jatkaa eteenpäin. Seuraavaksi siirry komentorivillä kansioon, jossa _main.py_ sijaitsee  (jos et ole jo)
 ja aja seuraava komento
