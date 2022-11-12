@@ -56,13 +56,15 @@ os.startfile(r"C:\...\Hallitus\kulukorvaukset.txt")
 ### .exe tiedoston luominen
 
 Jotta scripti olisi mahdollisimman vaivaton ajaa, on järkevää yllä olevien muutosten jälkeen muuttaa koodi ajettavaksi _.exe_ tiedostoksi.
-Tämä tapahtuu helpoiten ***pyinstallerin*** kautta. ***HUOM*** tässä vaiheessa oletan, että  koneellasi on jo Python asennettuna.
+Tämä tapahtuu helpoiten ***pyinstallerin*** kautta. 
+
+***HUOM*** tässä vaiheessa oletan, että  koneellasi on jo Python asennettuna.
 
 Ensimmäisenä ***asennetaan pyinstaller***.  Avataan siis komentorivi ja kirjoitetaan
 
 `pip install pyinstaller`
 
-Seuraavaksi tulee asentaa scriptiin liittyvät kirjastot.
+Seuraavaksi tulee ***asentaa*** scriptiin liittyvät ***kirjastot***.
 
 `pip install selenium`
 
@@ -70,7 +72,7 @@ Seuraavaksi tulee asentaa scriptiin liittyvät kirjastot.
 
 `pip install packaging`
 
-Ennen _.exe_ tiedostoksi muuttamista, kannattaa tässä vaiheessa kokeilla, että koodi toimii oikein komentorivin kautta. Navigoi siis komentorivillä
+Ennen _.exe_ tiedostoksi muuttamista, kannattaa tässä vaiheessa ***testata, että koodi toimii oikein*** komentorivin kautta. Navigoi siis komentorivillä
 kansioon, johon _main.py_ on tallenettu ja aja komento
 
 `python main.py`		
@@ -86,12 +88,13 @@ esim. työpöydällesi. Jatkossa voit siis ajaa ohjelman suoraan työpöydältä
 ## Huomioitavaa
 
 Ohjelma on tarkoitettu ***apuvälineeksi***. Muista aina ***varmistaa*** vielä ***manuaalisesti*** [kululaskut.fi](https://kululaskut.fi/):stä, että kaikki uudet
-kulukorvaukset on saatu mukaan.
+kulukorvaukset on otettu huomioon.
 
-Ohjelmassa ei ole kattavaa virhetarkastelua joten jos ohjelma kaatuu (varsinkin ensimmäsillä käyttökerroilla), kannattaa tarkistaa että muokatut hakemistojen osoitteet
+Ohjelmassa ei ole kattavaa virhetarkastelua joten jos ohjelma kaatuu (varsinkin ensimmäisillä käyttökerroilla), kannattaa tarkistaa että muokkaamasi hakemistojen osoitteet
 on kirjoitettu oikein.
 
 _login.txt_ tiedoston sisältö ei ole mitenkään salattua, joten suosittelen käyttämään salasanana jotain salasanaa, joka ei ole sinulla muualla käytössä.
-Näin jos salasana päätyisi jotain kautta vääriin käsiin, ei mitään radikaalia voi tapahtua.
+Jos salasana jostain syystä päätyisi vääriin käsiin, ei mitään radikaalia voi tapahtua. Kululaskut palvelussa ei onneksi saa mitään vakavaa tuhoa aikaan vaikka sinne joku
+ulkopuolinen pääsisikin.
 
 
