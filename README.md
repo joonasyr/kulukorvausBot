@@ -44,3 +44,32 @@ file = open(r"C:\...\Hallitus\kulukorvaukset.txt", "w")
 os.startfile(r"C:\...\Hallitus\kulukorvaukset.txt")
 
 ```
+
+### .exe tiedoston luominen
+
+Jotta scripti olisi mahdollisimman helppo ajaa, on järkevää yllä olevien muutosten jälkeen muuttaa koodi ajettavaksi _.exe_ tiedostoksi.
+Tämä tapahtuu helpoiten ***pyinstallerin*** kautta. *HUOM* tässä vaiheessa oletan, että  koneellasi on jo Python asennettuna.
+
+Ensimmäisenä ***asennetaan pyinstaller***.  Avataan siis komentorivi ja kirjoitetaan
+
+`pip install pyinstaller`
+
+Seuraavaksi tulee asentaa scriptiin liittyvät kirjastot.
+
+`pip install selenium`
+`pip install webdriver_manager`
+`pip install packaging`
+
+Ennen _.exe_ tiedostoksi muuttamista, kannattaa tässä vaiheessa kokeilla, että koodi toimii oikein komentorivin kautta. Navigoi siis komentorivillä
+kansioon, johon _main.py_ on tallenettu ja aja
+
+`Python main.py`
+
+Jos scripti toimi oikein, voidaan jatkaa eteenpäin. Seuraavaksi siirry komentorivillä kansioon, jossa _main.py_ sijaitsee  (jos et ole jo)
+ja aja seuraava komento
+
+`pyinstaller --onefile main.py`
+
+Tämän komennon suoritettuasi äskeiseen kansioon on nyt tullut lisää tiedostoja. Uudessa _dist_ kansiossa sijaitsee nyt _main.exe_, jonka voit siirtää
+esim. työpöydällesi valmiiksi käyttöä varten.
+
