@@ -1,6 +1,7 @@
 # kulukorvaus-scripti/botti
 
-**NOTE: this _README_ is only in Finnish, as the script is only used by Tite's treasurers and/or assistant treasurers that are required to speak fluent Finnish.**
+**NOTE: this _README_ is only in Finnish, as the script is only used by Tite's treasurers and/or assistant treasurers
+that are required to speak fluent Finnish.**
 
 ## Yleistä
 
@@ -73,16 +74,16 @@ Seuraavaksi tulee ***asentaa*** scriptiin liittyvät ***kirjastot***.
 `pip install packaging`
 
 Ennen _.exe_ tiedostoksi muuttamista, kannattaa tässä vaiheessa ***testata, että koodi toimii oikein*** komentorivin kautta. Navigoi siis komentorivillä
-kansioon, johon _main.py_ on tallenettu ja aja komento
+kansioon, johon _kulukorvaus.py_ on tallenettu ja aja komento
 
-`python main.py`		
+`python kulukorvaus.py`		
 
-Jos scripti toimi oikein, voidaan jatkaa eteenpäin. Seuraavaksi siirry komentorivillä kansioon, jossa _main.py_ sijaitsee  (jos et ole jo)
+Jos scripti toimi oikein, voidaan jatkaa eteenpäin. Seuraavaksi siirry komentorivillä kansioon, jossa _kulukorvaus.py_ sijaitsee  (jos et ole jo)
 ja aja seuraava komento
 
-`pyinstaller --onefile main.py`
+`pyinstaller --onefile kulukorvaus.py`
 
-Tämän komennon suoritettuasi äskeiseen kansioon on nyt tullut lisää tiedostoja. Uudessa _dist_ kansiossa sijaitsee nyt _main.exe_, jonka voit siirtää
+Tämän komennon suoritettuasi äskeiseen kansioon on nyt tullut lisää tiedostoja. Uudessa _dist_ kansiossa sijaitsee nyt _kulukorvaus.exe_, jonka voit siirtää
 esim. työpöydällesi. Jatkossa voit siis ajaa ohjelman suoraan työpöydältäsi.
 
 ## Huomioitavaa
