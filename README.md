@@ -19,7 +19,7 @@ puuduttavaa hommaa.
 
 Ensimmäiseksi tulee vaihtaa oikeat kirjautumistiedot _login.txt_ tiedostoon. 
 
-$${email; \color{red}testi@testi.fi}$$ $${;password; \color{red}insertPasswordHere}$$
+$${\color{gray}email; \color[{red}testi@testi.fi \color{gray};password; \color{red}insertPasswordHere}
 
 Riville 11 ja 18 tulee asettaa hakemiston osoite,
 johon tiedosto on koneellasi asennettu.
