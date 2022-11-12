@@ -1,21 +1,21 @@
 # kulukorvaus-scripti/botti
 
-**NOTE: this _README_ is only in Finnish, as the script is used by only Tite's treasurers and/or assistant treasurers that are required to speak fluent Finnish.
+**NOTE: this _README_ is only in Finnish, as the script is only used by Tite's treasurers and/or assistant treasurers that are required to speak fluent Finnish.
 
 ## Yleistä
 
-Kyseessä on botti joka automatisoi kulukorvausten hakemisen [kululaskut.fi](https://kululaskut.fi/) sivustolta.
+Kyseessä on scripti joka automatisoi kulukorvausten hakemisen [kululaskut.fi](https://kululaskut.fi/) sivustolta.
 
-Botti kirjautuu itse määritellyillä tunniksilla sivustolle, hakee uudet kulukorvaukset viimeisen 30 päivän sisällä,
+Ohjelma kirjautuu itse määritellyillä tunniksilla sivustolle, hakee uudet kulukorvaukset viimeisen 30 päivän sisällä,
 lataa niistä CSV tiedoston ja lopuksi uudelleenkirjoittaa CSV tiedoston käytettävän datan tekstimuotoon, jonka
-voi kopioida suoraan kokouksen virtuaaliseen esityslistaan.
+voi kopioida suoraan seuraavan kokouksen esityslistaan.
 
 ### _Miksi?_
 
 Helpottamaan rahastonhoitajan / rahastonhoitajan avun elämää. Kulukorvausten liittäminen VEL:iin manuaalisesti on
 puuduttavaa hommaa. Tällä säästää kallisarvoisia minuutteja joka viikko!
 
-Lisäksi halusin tutustua seleniumiin ja sen kautta erilaisten toimintojen automatisointiin.
+Lisäksi halusin tutustua seleniumiin, erilaisten toimintojen automatisointiin ja palautella mieleen Pythonia.
 
 ## Asennus
 
@@ -36,7 +36,7 @@ Seuraavaksi riville 66 tulee asettaa hakemiston osoite, johon Chrome on asetettu
 
 ```python
 
-downloads = glob.glob("C:\\Users\\joona\\Downloads\\*".format(getpass.getuser()))
+downloads = glob.glob("C:\\Users\\nameHere\\Downloads\\*".format(getpass.getuser()))
 
 ```
 

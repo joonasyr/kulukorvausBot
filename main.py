@@ -8,14 +8,14 @@ import time
 
 
 def fetchEmail():
-    login_file = open(r"C:\Users\joona\PycharmProjects\kulukorvaus_projekti\login", "r")
+    login_file = open(r"C:\...", "r")
     email = login_file.readline().split(";")[1]
     login_file.close()
     return email
 
 
 def fetchPassword():
-    login_file = open(r"C:\Users\joona\PycharmProjects\kulukorvaus_projekti\login", "r")
+    login_file = open(r"C:\...", "r")
     password = login_file.readline().split(";")[3]
     login_file.close()
     return password
@@ -63,7 +63,7 @@ def downloadCSV(browser):
 
 
 def filterData():
-    downloads = glob.glob("C:\\Users\\joona\\Downloads\\*".format(getpass.getuser()))
+    downloads = glob.glob("C:\\Users\\nameHere\\Downloads\\*".format(getpass.getuser()))
     latest_download = max(downloads, key=os.path.getctime)
     data = []
 
@@ -85,12 +85,12 @@ def filterData():
 
 
 def displayResults(data):
-    file = open(r"C:\Users\joona\Desktop\School Stuff\Hallitus\kulukorvaukset.txt", "w")
+    file = open(r"C:\...\Hallitus\kulukorvaukset.txt", "w")
     for line in data:
         line = line.replace("Ã¤", "ä")
         file.write(line + "\n")
     file.close()
-    os.startfile(r"C:\Users\joona\Desktop\School Stuff\Hallitus\kulukorvaukset.txt")
+    os.startfile(r"C:\...\Hallitus\kulukorvaukset.txt")
 
 
 # Open browser
