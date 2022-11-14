@@ -24,7 +24,7 @@ Ensimmäiseksi tulee vaihtaa oikeat kirjautumistiedot _login.txt_ tiedostoon.
 
 $${\color{lightgray}email; \color{red}testi@testi.fi \color{lightgray};password; \color{red}insertPasswordHere}$$
 
-Tämän jälkeen riveille 15 ja 26 tulee asettaa polku tiedostolle _login.txt_, jonka olet kloonannut repositoriosta.
+Tämän jälkeen riveille 11 ja 17 tulee asettaa polku tiedostolle _login.txt_, jonka olet kloonannut repositoriosta.
 
 ```python
 
@@ -32,7 +32,7 @@ login_file = open(r"C:\...", "r")
 
 ```
 
-Seuraavaksi riville 85 tulee asettaa kansion polku, johon Chrome on asetettu tallentamaan uudet tiedostot (yleensä _Downloads_ kansio).
+Seuraavaksi riville 64 tulee asettaa kansion polku, johon Chrome on asetettu tallentamaan uudet tiedostot (yleensä _Downloads_ kansio).
 
 ```python
 
@@ -41,7 +41,7 @@ downloads = glob.glob("C:\\Users\\nameHere\\Downloads\\*".format(getpass.getuser
 ```
 
 Viimeisenä muutoksena tulee määritellä tiedosto, johon käsitelty tieto tallennetaan. Itse olen esim. luonut _kulukorvaukset.txt_ tiedoston _Hallitus_ kansioon
-ja liittänyt tämän tiedoston polun koodiin. Tämä tapahtuu riveillä 112 ja 120
+ja liittänyt tämän tiedoston polun koodiin. Tämä tapahtuu riveillä 85 ja 89
 
 ```python
 
