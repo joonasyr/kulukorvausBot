@@ -8,33 +8,18 @@ import time
 
 
 def fetchEmail():
-    """
-    Fetches the user's email from the login file
-    :return: user email as a string
-    """
-    login_file = open(r"C:\...", "r")   # EDIT THIS
-    email = login_file.readline().split(";")[1]
-    login_file.close()
+    with open("C:\\Users\\joona\\PycharmProjects\\kulukorvaus_projekti\\login", "r") as login_file:
+        email = login_file.readline().split(";")[1]
     return email
 
 
 def fetchPassword():
-    """
-    Fetches the user's password from the login file.
-    :return: user password as a string
-    """
-    login_file = open(r"C:\...", "r")   # EDIT THIS
-    password = login_file.readline().split(";")[3]
-    login_file.close()
+    with open("C:\\Users\\joona\\PycharmProjects\\kulukorvaus_projekti\\login", "r") as login_file:
+        password = login_file.readline().split(";")[3]
     return password
 
 
 def downloadCSV(browser):
-    """
-    Opens a website, logs into it and navigates it to download a CSV file with data
-    about new unapproved reimbursements within a 30-day period.
-    :param browser: webdriver Chrome window
-    """
     browser.get('https://kululaskut.fi/')
     browser.maximize_window()
 
@@ -76,27 +61,20 @@ def downloadCSV(browser):
 
 
 def filterData():
-    """
-    Opens the most recent downloaded (CSV) file that contains all data regarding
-    new unapproved reimbursements. Relevant data is then parsed from the file and
-    into an array of strings.
-    :return: an array of strings that contain reimbursements' data
-    """
-    downloads = glob.glob("C:\\Users\\nameHere\\Downloads\\*".format(getpass.getuser()))    # EDIT THIS
+    downloads = glob.glob("C:\\Users\\joona\\Downloads\\*".format(getpass.getuser()))
     latest_download = max(downloads, key=os.path.getctime)
-    temp_data = []
+    data = []
+
+    with open(latest_download, "r") as csv_file:
+        next(csv_file)  # skip the header line
+        for line in csv_file:
+            relevant_data = []
+            line = line.split(";")
+            relevant_data.extend((line[3][1:-1], line[10][1:-1], line[9][1:-1] + " € "))
+            data.append(relevant_data)
+
     final_data = []
-
-    csv_file = open(latest_download, "r")
-    next(csv_file)  # skip the header line
-    for line in csv_file:
-        relevant_data = []
-        line = line.split(";")
-        relevant_data.extend((line[3][1:-1], line[10][1:-1], line[9][1:-1] + " € "))
-        temp_data.append(relevant_data)
-    csv_file.close()
-
-    for array in temp_data:
+    for array in data:
         line = "; ".join(array)
         final_data.append(line)
 
@@ -104,20 +82,11 @@ def filterData():
 
 
 def displayResults(data):
-    """
-    Writes data about the new reimbursements onto a file and opens that file
-    :param data: an array of strings that contain reimbursements' data
-    """
-
-    file = open(r"C:\...\Hallitus\kulukorvaukset.txt", "w")     # EDIT THIS
-
-    for line in data:
-        line = line.replace("Ã¤", "ä")
-        file.write(line + "\n")
-
-    file.close()
-
-    os.startfile(r"C:\...\Hallitus\kulukorvaukset.txt")     # EDIT THIS
+    with open("C:\\Users\\joona\\Desktop\\School Stuff\\Hallitus\\kulukorvaukset.txt", "w") as file:
+        for line in data:
+            line = line.replace("Ã¤", "ä")
+            file.write(line + "\n")
+        os.startfile("C:\\Users\\joona\\Desktop\\School Stuff\\Hallitus\\kulukorvaukset.txt")
 
 
 # Open browser
@@ -131,4 +100,5 @@ final_data = filterData()
 
 # Data about new reimbursements ready to be copied and pasted into the meeting's agenda
 displayResults(final_data)
+
 
