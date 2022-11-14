@@ -28,7 +28,7 @@ Tämän jälkeen riveille 11 ja 17 tulee asettaa polku tiedostolle _login.txt_, 
 
 ```python
 
-with open("C:\\Users\\joona\\PycharmProjects\\kulukorvaus_projekti\\login", "r") as login_file:
+with open("C:\\...\\login", "r") as login_file:
 
 ```
 
@@ -36,7 +36,7 @@ Seuraavaksi riville 64 tulee asettaa kansion polku, johon Chrome on asetettu tal
 
 ```python
 
-downloads = glob.glob("C:\\Users\\joona\\Downloads\\*".format(getpass.getuser()))
+downloads = glob.glob("C:\\Users\\_nameHere_\\Downloads\\*".format(getpass.getuser()))
 
 ```
 
@@ -45,11 +45,11 @@ ja liittänyt tämän tiedoston polun koodiin. Tämä tapahtuu riveillä 85 ja 8
 
 ```python
 
-with open("C:\\Users\\joona\\Desktop\\School Stuff\\Hallitus\\kulukorvaukset.txt", "w") as file:
+with open("C:\\...\\Hallitus\\kulukorvaukset.txt", "w") as file:
 .
 .
 .
-os.startfile("C:\\Users\\joona\\Desktop\\School Stuff\\Hallitus\\kulukorvaukset.txt")
+os.startfile("C:\\...\\Hallitus\\kulukorvaukset.txt")
 
 ```
 
