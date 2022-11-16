@@ -56,7 +56,7 @@ def downloadCSV(browser):
     download_csv = browser.find_element(By.XPATH, '//*[@id="new_print"]/div/div/div[3]/input')
     download_csv.click()
 
-    time.sleep(2)
+    time.sleep(5)
     browser.quit()
 
 
