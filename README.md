@@ -31,8 +31,15 @@ Tämän jälkeen riveille 11 ja 17 tulee asettaa polku tiedostolle _login.txt_, 
 with open("C:\\...\\login", "r") as login_file:
 
 ```
+**HUOM: pythoniin voi merkitä tiedoston polun monella eri tavalla. Pidä huoli, että polut on merkitty oikein. Alla on
+esimerkit kolmesta erilaisesta merkintätavasta.**
 
-Seuraavaksi riville 64 tulee asettaa kansion polku, johon Chrome on asetettu tallentamaan uudet tiedostot (yleensä _Downloads_ kansio).
+´´´python
+file_path = "C:/file/path/here"
+file_path = "C:\\file\\path\\here"
+file_path = r"C:\file\path\here"
+´´´
+Jatketaan. Seuraavaksi riville 64 tulee asettaa kansion polku, johon Chrome on asetettu tallentamaan uudet tiedostot (yleensä _Downloads_ kansio).
 
 ```python
 
