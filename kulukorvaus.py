@@ -6,15 +6,20 @@ import glob
 import os
 import time
 
+# Add your own file paths here
+login_file_path = r"C:/.../login.txt"
+downloads_path = r"C:/.../Downloads/*"  # DONT REMOVE THE *
+kulukorvaukset_path = r"C:/.../Hallitus/kulukorvaukset.txt"
+
 
 def fetchEmail():
-    with open("C:\\Users\\joona\\PycharmProjects\\kulukorvaus_projekti\\login", "r") as login_file:
+    with open(login_file_path, "r") as login_file:
         email = login_file.readline().split(";")[1]
     return email
 
 
 def fetchPassword():
-    with open("C:\\Users\\joona\\PycharmProjects\\kulukorvaus_projekti\\login", "r") as login_file:
+    with open(login_file_path, "r") as login_file:
         password = login_file.readline().split(";")[3]
     return password
 
@@ -61,7 +66,7 @@ def downloadCSV(browser):
 
 
 def filterData():
-    downloads = glob.glob("C:\\Users\\joona\\Downloads\\*".format(getpass.getuser()))
+    downloads = glob.glob(downloads_path.format(getpass.getuser()))
     latest_download = max(downloads, key=os.path.getctime)
     data = []
 
@@ -82,11 +87,11 @@ def filterData():
 
 
 def displayResults(data):
-    with open("C:\\Users\\joona\\Desktop\\School Stuff\\Hallitus\\kulukorvaukset.txt", "w") as file:
+    with open(kulukorvaukset_path, "w") as file:
         for line in data:
             line = line.replace("Ã¤", "ä")
             file.write(line + "\n")
-        os.startfile("C:\\Users\\joona\\Desktop\\School Stuff\\Hallitus\\kulukorvaukset.txt")
+        os.startfile(kulukorvaukset_path)
 
 
 # Open browser
