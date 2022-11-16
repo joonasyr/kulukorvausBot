@@ -24,13 +24,8 @@ Ensimmäiseksi tulee vaihtaa oikeat kirjautumistiedot _login.txt_ tiedostoon.
 
 $${\color{lightgray}email; \color{red}testi@testi.fi \color{lightgray};password; \color{red}insertPasswordHere}$$
 
-Tämän jälkeen riveille 11 ja 17 tulee asettaa polku tiedostolle _login.txt_, jonka olet kloonannut repositoriosta.
+Tämän jälkeen riveille 9, 10 ja 11 tulee asettaa oikeat polut. 
 
-```python
-
-with open("C:\\...\\login", "r") as login_file:
-
-```
 **HUOM: pythoniin voi merkitä tiedoston polun monella eri tavalla. Pidä huoli, että polut on merkitty oikein. Alla on
 esimerkit kolmesta erilaisesta merkintätavasta.**
 
@@ -39,24 +34,29 @@ file_path = "C:/file/path/here"
 file_path = "C:\\file\\path\\here"
 file_path = r"C:\file\path\here"
 ```
-Jatketaan. Seuraavaksi riville 64 tulee asettaa kansion polku, johon Chrome on asetettu tallentamaan uudet tiedostot (yleensä _Downloads_ kansio).
+
+Riville 9 asetetaan polku tiedostolle _login.txt_, jonka olet juuri kloonannut repositoriosta.
 
 ```python
 
-downloads = glob.glob("C:\\Users\\_nameHere_\\Downloads\\*".format(getpass.getuser()))
+login_file_path = r"C:/.../login.txt", "r"
 
 ```
 
-Viimeisenä muutoksena tulee määritellä tiedosto, johon käsitelty tieto tallennetaan. Itse olen esim. luonut _kulukorvaukset.txt_ tiedoston _Hallitus_ kansioon
-ja liittänyt tämän tiedoston polun koodiin. Tämä tapahtuu riveillä 85 ja 89
+Seuraavaksi riville 10 tulee asettaa kansion polku, johon Chrome on asetettu tallentamaan uudet tiedostot (yleensä _Downloads_ kansio).
 
 ```python
 
-with open("C:\\...\\Hallitus\\kulukorvaukset.txt", "w") as file:
-.
-.
-.
-os.startfile("C:\\...\\Hallitus\\kulukorvaukset.txt")
+downloads_path = r"C:/Users/_nameHere_/Downloads/*"
+
+```
+
+Viimeisenä muutoksena tulee määritellä tiedosto, johon käsitelty, valmis data tallennetaan. Itse olen esim. luonut _kulukorvaukset.txt_ tiedoston omaan
+_Hallitus_ kansiooni ja liittänyt tämän tiedoston polun koodiin. Tämä tapahtuu rivillä 11.
+
+```python
+
+kulukorvaukset_path = r"C:/.../Hallitus/kulukorvaukset.txt"
 
 ```
 
