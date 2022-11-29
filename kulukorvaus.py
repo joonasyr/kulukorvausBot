@@ -90,6 +90,7 @@ def displayResults(data):
     with open(kulukorvaukset_path, "w") as file:
         for line in data:
             line = line.replace("Ã¤", "ä")
+            line = line.replace("Ã¶", "ö")
             file.write(line + "\n")
         os.startfile(kulukorvaukset_path)
 
