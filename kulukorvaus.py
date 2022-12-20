@@ -68,31 +68,57 @@ def downloadCSV(browser):
 def filterData():
     downloads = glob.glob(downloads_path.format(getpass.getuser()))
     latest_download = max(downloads, key=os.path.getctime)
-    data = []
+
+    reimbursements = []
+    card_payments = []
+    mileages = []
+    final_lists = []
 
     with open(latest_download, "r") as csv_file:
         next(csv_file)  # skip the header line
         for line in csv_file:
             relevant_data = []
             line = line.split(";")
-            relevant_data.extend((line[3][1:-1], line[10][1:-1], line[9][1:-1] + " € "))
-            data.append(relevant_data)
+            type = line[11][1:-1]
+            relevant_data.extend(("- " + line[3][1:-1], line[10][1:-1], line[9][1:-1] + " €"))
+            if type == "Kulukorvaus":
+                line = "; ".join(relevant_data)
+                reimbursements.append(line)
+            elif type == "Korttiosto killan kortilla":
+                line = "; ".join(relevant_data)
+                card_payments.append(line)
+            else:
+                line = "; ".join(relevant_data)
+                mileages.append(line)
+    final_lists.extend((reimbursements, card_payments, mileages))
 
-    final_data = []
-    for array in data:
-        line = "; ".join(array)
-        final_data.append(line)
-
-    return final_data
+    return final_lists
 
 
 def displayResults(data):
     with open(kulukorvaukset_path, "w") as file:
-        for line in data:
-            line = line.replace("Ã¤", "ä")
-            line = line.replace("Ã¶", "ö")
-            file.write(line + "\n")
-        os.startfile(kulukorvaukset_path)
+        if len(data[0]) > 0:
+            file.write("Kulukorvaukset: \n")
+            for line in data[0]:
+                line = line.replace("Ã¤", "ä")
+                line = line.replace("Ã¶", "ö")
+                file.write(line + "\n")
+
+        if len(data[1]) > 0:
+            file.write("Korttiostot: \n")
+            for line in data[1]:
+                line = line.replace("Ã¤", "ä")
+                line = line.replace("Ã¶", "ö")
+                file.write(line + "\n")
+
+        if len(data[2]) > 0:
+            file.write("Kilometrikorvaukset: \n")
+            for line in data[2]:
+                line = line.replace("Ã¤", "ä")
+                line = line.replace("Ã¶", "ö")
+                file.write(line + "\n")
+
+    os.startfile(kulukorvaukset_path)
 
 
 # Open browser
@@ -106,5 +132,4 @@ final_data = filterData()
 
 # Data about new reimbursements ready to be copied and pasted into the meeting's agenda
 displayResults(final_data)
-
 
