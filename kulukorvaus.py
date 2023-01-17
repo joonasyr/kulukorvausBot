@@ -72,6 +72,7 @@ def filterData():
     reimbursements = []
     card_payments = []
     mileages = []
+    hati_reimbursements = []
     final_lists = []
 
     with open(latest_download, "r") as csv_file:
@@ -87,10 +88,13 @@ def filterData():
             elif type == "Korttiosto killan kortilla":
                 line = "; ".join(relevant_data)
                 card_payments.append(line)
+            elif type == "Haalaritiimin kulukorvaus":
+                line = "; ".join(relevant_data)
+                hati_reimbursements.append(line)
             else:
                 line = "; ".join(relevant_data)
                 mileages.append(line)
-    final_lists.extend((reimbursements, card_payments, mileages))
+    final_lists.extend((reimbursements, card_payments, mileages, hati_reimbursements))
 
     return final_lists
 
@@ -114,6 +118,13 @@ def displayResults(data):
         if len(data[2]) > 0:
             file.write("Kilometrikorvaukset: \n")
             for line in data[2]:
+                line = line.replace("Ã¤", "ä")
+                line = line.replace("Ã¶", "ö")
+                file.write(line + "\n")
+
+        if len(data[3]) > 0:
+            file.write("Hatin kulukorvaukset: \n")
+            for line in data[3]:
                 line = line.replace("Ã¤", "ä")
                 line = line.replace("Ã¶", "ö")
                 file.write(line + "\n")
