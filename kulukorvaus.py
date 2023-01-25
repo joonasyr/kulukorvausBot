@@ -5,6 +5,7 @@ import getpass
 import glob
 import os
 import time
+import csv
 
 # Add your own file paths here
 login_file_path = r"C:/.../login.txt"
@@ -75,25 +76,32 @@ def filterData():
     hati_reimbursements = []
     final_lists = []
 
-    with open(latest_download, "r") as csv_file:
-        next(csv_file)  # skip the header line
-        for line in csv_file:
+    with open(latest_download, newline='', encoding='utf-8') as csv_file:
+        reader = csv.reader(csv_file, delimiter=";")
+        next(reader)
+        
+        for line in reader:
             relevant_data = []
-            line = line.split(";")
-            type = line[11][1:-1]
-            relevant_data.extend(("- " + line[3][1:-1], line[10][1:-1], line[9][1:-1] + " €"))
+            type = line[11]
+            data = f"- {line[3]}; {line[10]}; {float(line[9]):.2f} €"
+            relevant_data.append(data)
+
             if type == "Kulukorvaus":
                 line = "; ".join(relevant_data)
                 reimbursements.append(line)
+
             elif type == "Korttiosto killan kortilla":
                 line = "; ".join(relevant_data)
                 card_payments.append(line)
+
             elif type == "Haalaritiimin kulukorvaus":
                 line = "; ".join(relevant_data)
                 hati_reimbursements.append(line)
-            else:
+
+            elif type == "Kilometrikorvaus":
                 line = "; ".join(relevant_data)
                 mileages.append(line)
+
     final_lists.extend((reimbursements, card_payments, mileages, hati_reimbursements))
 
     return final_lists
