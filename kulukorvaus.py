@@ -13,13 +13,13 @@ downloads_path = r"C:/.../Downloads/*"  # DONT REMOVE THE *
 kulukorvaukset_path = r"C:/.../Hallitus/kulukorvaukset.txt"
 
 
-def fetchEmail():
+def getEmail():
     with open(login_file_path, "r") as login_file:
         email = login_file.readline().split(";")[1]
     return email
 
 
-def fetchPassword():
+def getPassword():
     with open(login_file_path, "r") as login_file:
         password = login_file.readline().split(";")[3]
     return password
@@ -33,9 +33,9 @@ def downloadCSV(browser):
     home_login_btn.click()
 
     email_input = browser.find_element(By.NAME, "user_email")
-    email_input.send_keys(fetchEmail())
+    email_input.send_keys(getEmail())
     password_input = browser.find_element(By.NAME, "user_password")
-    password_input.send_keys(fetchPassword())
+    password_input.send_keys(getPassword())
 
     login_btn = browser.find_element(By.NAME, "login")
     login_btn.click()
@@ -98,7 +98,7 @@ def filterData():
                 line = "; ".join(relevant_data)
                 hati_reimbursements.append(line)
 
-            elif type == "Kilometrikorvaus":
+            elif type == "Killan yleinen kilometrikorvaus":
                 line = "; ".join(relevant_data)
                 mileages.append(line)
 
@@ -108,8 +108,10 @@ def filterData():
 
 
 def displayResults(data):
+    hasResults = False
     with open(kulukorvaukset_path, "w") as file:
         if len(data[0]) > 0:
+            hasResults = True
             file.write("Kulukorvaukset: \n")
             for line in data[0]:
                 line = line.replace("Ã¤", "ä")
@@ -117,6 +119,7 @@ def displayResults(data):
                 file.write(line + "\n")
 
         if len(data[1]) > 0:
+            hasResults = True
             file.write("Korttiostot: \n")
             for line in data[1]:
                 line = line.replace("Ã¤", "ä")
@@ -124,6 +127,7 @@ def displayResults(data):
                 file.write(line + "\n")
 
         if len(data[2]) > 0:
+            hasResults = True
             file.write("Kilometrikorvaukset: \n")
             for line in data[2]:
                 line = line.replace("Ã¤", "ä")
@@ -131,11 +135,15 @@ def displayResults(data):
                 file.write(line + "\n")
 
         if len(data[3]) > 0:
+            hasResults = True
             file.write("Hatin kulukorvaukset: \n")
             for line in data[3]:
                 line = line.replace("Ã¤", "ä")
                 line = line.replace("Ã¶", "ö")
                 file.write(line + "\n")
+
+        if not hasResults:
+            file.write("Ei uusia korvauksia")
 
     os.startfile(kulukorvaukset_path)
 
