@@ -1,5 +1,4 @@
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 import getpass
 import glob
@@ -8,9 +7,9 @@ import time
 import csv
 
 # Add your own file paths here
-login_file_path = r"C:/.../login.txt"
-downloads_path = r"C:/.../Downloads/*"  # DONT REMOVE THE *
-kulukorvaukset_path = r"C:/.../Hallitus/kulukorvaukset.txt"
+login_file_path = r"D:/KB/kulukorvausBot/login"
+downloads_path = r"C:/Users/joona/Downloads/*"  # DONT REMOVE THE *
+kulukorvaukset_path = r"F:/Hallitus/kulukorvaukset"
 
 
 def fetchEmail():
@@ -141,7 +140,7 @@ def displayResults(data):
 
 
 # Open browser
-chrome = webdriver.Chrome(ChromeDriverManager().install())
+chrome = webdriver.Chrome()
 
 # Download data file
 downloadCSV(chrome)
