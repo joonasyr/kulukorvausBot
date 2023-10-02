@@ -7,9 +7,9 @@ import time
 import csv
 
 # Add your own file paths here
-login_file_path = r"C:\Users\joona\PycharmProjects\kulukorvaus_projekti\login"
-downloads_path = r"C:/Users/joona/Downloads/*"  # DONT REMOVE THE *
-kulukorvaukset_path = r"C:\Users\joona\Desktop\School Stuff\Hallitus\kulukorvaukset"
+login_file_path =  r"C:/.../login.txt"
+downloads_path = r"C:/Users/_nameHere_/Downloads/*"  # DONT REMOVE THE *
+kulukorvaukset_path = r"C:/.../Hallitus/kulukorvaukset.txt"
 
 
 def getEmail():
