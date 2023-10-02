@@ -7,9 +7,9 @@ import time
 import csv
 
 # Add your own file paths here
-login_file_path = r"D:/KB/kulukorvausBot/login"
+login_file_path = r"C:\Users\joona\PycharmProjects\kulukorvaus_projekti\login"
 downloads_path = r"C:/Users/joona/Downloads/*"  # DONT REMOVE THE *
-kulukorvaukset_path = r"F:/Hallitus/kulukorvaukset"
+kulukorvaukset_path = r"C:\Users\joona\Desktop\School Stuff\Hallitus\kulukorvaukset"
 
 
 def getEmail():
@@ -31,34 +31,47 @@ def downloadCSV(browser):
     home_login_btn = browser.find_element(By.ID, "menu-item-112")
     home_login_btn.click()
 
-    email_input = browser.find_element(By.NAME, "user_email")
+    email_input = browser.find_element(By.ID, "email")
     email_input.send_keys(getEmail())
-    password_input = browser.find_element(By.NAME, "user_password")
+    password_input = browser.find_element(By.ID, "password")
     password_input.send_keys(getPassword())
 
-    login_btn = browser.find_element(By.NAME, "login")
+    login_btn = browser.find_element(By.ID, "submit")
     login_btn.click()
     browser.implicitly_wait(2)
 
-    summary_page = browser.find_element(By.LINK_TEXT, "Tulosteet ja koosteet")
-    summary_page.click()
-    browser.implicitly_wait(2)
-
-    file_type_select = browser.find_element(By.XPATH, '//*[@id="print_modes"]/label[3]/div/ins')
+    file_type_select = browser.find_element(By.XPATH, '//*[text() = "Työkalut"]')
     file_type_select.click()
+    browser.implicitly_wait(1)
 
-    select_date = browser.find_element(By.XPATH, '//*[@id="daterange-btn"]')
-    select_date.click()
+    file_type_select = browser.find_element(By.XPATH, '//*[text() = "Tulosteet ja koosteet"]')
+    file_type_select.click()
+    browser.implicitly_wait(1)
 
-    select_week = browser.find_element(By.XPATH, '/html/body/div[2]/div[3]/ul/li[3]')
-    select_week.click()
+    # Opens the date selection panel
+    select_span = browser.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div/div[2]/div/form/div[2]/div[1]/div/div/div/div/div/div')
+    select_span.click()
+    browser.implicitly_wait(1)
 
-    select_date.click()
-
-    select_month = browser.find_element(By.XPATH, '/html/body/div[2]/div[3]/ul/li[4]')
+    select_month = browser.find_element(By.XPATH, '//*[text() = "Edelliset 30 päivää"]')
     select_month.click()
+    browser.implicitly_wait(1)
 
-    download_csv = browser.find_element(By.XPATH, '//*[@id="new_print"]/div/div/div[3]/input')
+    close = browser.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div/div[2]/div/form/div[1]/label[1]')
+    close.click()
+    browser.implicitly_wait(1)
+
+    pick_csv = browser.find_element(By.XPATH, '//*[@id="format"]/label[3]')
+    pick_csv.click()
+    browser.implicitly_wait(1)
+
+    accepted = browser.find_element(By.XPATH, '//*[@id="status"]/label[2]')
+    accepted.click()
+
+    locked = browser.find_element(By.XPATH, '//*[@id="status"]/label[3]')
+    locked.click()
+
+    download_csv = browser.find_element(By.XPATH, '//*[@id="submit"]')
     download_csv.click()
 
     time.sleep(5)
@@ -82,24 +95,25 @@ def filterData():
         for line in reader:
             relevant_data = []
             type = line[11]
-            data = f"- {line[3]}; {line[10]}; {float(line[9]):.2f} €"
+            data = f"- {line[3]}; {line[10]}; {line[9]} €"
             relevant_data.append(data)
 
-            if type == "Kulukorvaus":
-                line = "; ".join(relevant_data)
-                reimbursements.append(line)
-
-            elif type == "Korttiosto killan kortilla":
-                line = "; ".join(relevant_data)
-                card_payments.append(line)
-
-            elif type == "Haalaritiimin kulukorvaus":
-                line = "; ".join(relevant_data)
-                hati_reimbursements.append(line)
-
-            elif type == "Killan yleinen kilometrikorvaus":
+            if line[17] == "Killan yleinen kilometrikorvaus":
                 line = "; ".join(relevant_data)
                 mileages.append(line)
+
+            else:
+                if type == "Kulukorvaus":
+                    line = "; ".join(relevant_data)
+                    reimbursements.append(line)
+
+                elif type == "Korttiosto killan kortilla":
+                    line = "; ".join(relevant_data)
+                    card_payments.append(line)
+
+                elif type == "Haalaritiimin kulukorvaus":
+                    line = "; ".join(relevant_data)
+                    hati_reimbursements.append(line)
 
     final_lists.extend((reimbursements, card_payments, mileages, hati_reimbursements))
 
