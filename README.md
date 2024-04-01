@@ -22,7 +22,7 @@ Lisäksi halusin tutustua seleniumiin, erilaisten toimintojen automatisointiin j
 
 Ensimmäiseksi tulee vaihtaa oikeat kirjautumistiedot _login.txt_ tiedostoon. 
 
-$${\color{lightgray}email; \color{red}testi@testi.fi \color{lightgray};password; \color{red}insertPasswordHere}$$
+<span style="color: lightgray">email;</span> <span style="color: red">testi@testi.fi</span> <span style="color: lightgray">;password;</span> <span style="color: red">insertPasswordHere</span>
 
 Tämän jälkeen riveille 9, 10 ja 11 tulee asettaa oikeat polut. 
 
